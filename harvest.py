@@ -78,18 +78,56 @@ def make_melon_type_lookup(melon_types):
 class Melon(object):
     """A melon in a melon harvest."""
 
-    # Fill in the rest
-    # Needs __init__ and is_sellable methods
+    def __init__(self, melon_type, shape_rating, color_rating,  
+                 field_number, harvester_name):
+        """Initialize a melon."""
+
+        self.melon_type = melon_type
+        self.shape_rating = shape_rating
+        self.color_rating = color_rating
+        self.field_number = field_number
+        self.harvester_name = harvester_name
+        
+
+    def is_sellable(self):
+
+        if self.color_rating > 5 and self.shape_rating > 5 and \
+        self.field_number != 3:
+            return True
+        else:
+            return False
 
 def make_melons(melon_types):
     """Returns a list of Melon objects."""
 
-    # Fill in the rest
+    melon_dictionary = make_melon_type_lookup(melon_types)
+
+    melon_1 = Melon(melon_dictionary['yw'], 8, 7, 2, 'Sheila')
+    melon_2 = Melon(melons_dictionary['yw'], 3, 4, 2, 'Sheila')
+    melon_3 = Melon(melons_dictionary['yw'], 9, 8, 3, 'Sheila')
+    melon_4 = Melon(melons_dictionary['cas'], 10, 6, 35, 'Sheila')
+    melon_5 = Melon(melons_dictionary['cren'], 8, 9, 35, 'Michael')
+    melon_6 = Melon(melons_dictionary['cren'], 8, 2, 35, 'Michael')
+    melon_7 = Melon(melons_dictionary['cren'], 2, 3, 4, 'Michael')
+    melon_8 = Melon(melons_dictionary['musk'], 6, 7, 4, 'Michael')
+    melon_9 = Melon(melons_dictionary['yw'], 7, 10, 3, 'Sheila')
+
+    melon_list = [melon_1, melon_2, melon_3, melon_4, melon_5, melon_6, \
+                  melon_7, melon_8, melon_9]
 
 def get_sellability_report(melons):
     """Given a list of melon object, prints whether each one is sellable."""
 
-    # Fill in the rest 
+    for melon in melons:
+        if is_sellable(self) == True:
+            status = "(CAN BE SOLD)"
+        else:
+            status = "(NOT SELLABLE)"
+        #Or can be written as: 
+        #status = 'CAN BE SOLD' if melon.is_sellable() else 'NOT SELLABLE'
+        print(f"Harvested by {melon.harvester_name} from \
+                Field {melon.field_number} {status}")
+
 
 
 
