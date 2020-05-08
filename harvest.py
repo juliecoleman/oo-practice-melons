@@ -55,6 +55,10 @@ def make_melon_types():
 
     return all_melon_types
 
+
+melon_types = make_melon_types()
+print(melon_types)
+
 def print_pairing_info(melon_types):
     """Prints information about each melon type's pairings."""
     for melon in melon_types:
@@ -62,14 +66,18 @@ def print_pairing_info(melon_types):
         for pairing in melon.pairings:
             print(f"{pairing}")
 
+print(print_pairing_info(melon_types))
+
 def make_melon_type_lookup(melon_types):
     """Takes a list of MelonTypes and returns a dictionary of melon type by code."""
+    melon_dictionary = {}
 
     for melon in melon_types:
-        melon_dictionary = {}
         if melon.code not in melon_dictionary:
             melon_dictionary[melon.code] = melon
-        return melon_dictionary
+    return melon_dictionary
+
+print(make_melon_type_lookup(melon_types))
 
 ############
 # Part 2   #
@@ -103,25 +111,28 @@ def make_melons(melon_types):
     melon_dictionary = make_melon_type_lookup(melon_types)
 
     melon_1 = Melon(melon_dictionary['yw'], 8, 7, 2, 'Sheila')
-    melon_2 = Melon(melons_dictionary['yw'], 3, 4, 2, 'Sheila')
-    melon_3 = Melon(melons_dictionary['yw'], 9, 8, 3, 'Sheila')
-    melon_4 = Melon(melons_dictionary['cas'], 10, 6, 35, 'Sheila')
-    melon_5 = Melon(melons_dictionary['cren'], 8, 9, 35, 'Michael')
-    melon_6 = Melon(melons_dictionary['cren'], 8, 2, 35, 'Michael')
-    melon_7 = Melon(melons_dictionary['cren'], 2, 3, 4, 'Michael')
-    melon_8 = Melon(melons_dictionary['musk'], 6, 7, 4, 'Michael')
-    melon_9 = Melon(melons_dictionary['yw'], 7, 10, 3, 'Sheila')
+    melon_2 = Melon(melon_dictionary['yw'], 3, 4, 2, 'Sheila')
+    melon_3 = Melon(melon_dictionary['yw'], 9, 8, 3, 'Sheila')
+    melon_4 = Melon(melon_dictionary['cas'], 10, 6, 35, 'Sheila')
+    melon_5 = Melon(melon_dictionary['cren'], 8, 9, 35, 'Michael')
+    melon_6 = Melon(melon_dictionary['cren'], 8, 2, 35, 'Michael')
+    melon_7 = Melon(melon_dictionary['cren'], 2, 3, 4, 'Michael')
+    melon_8 = Melon(melon_dictionary['musk'], 6, 7, 4, 'Michael')
+    melon_9 = Melon(melon_dictionary['yw'], 7, 10, 3, 'Sheila')
 
     melon_list = [melon_1, melon_2, melon_3, melon_4, melon_5, melon_6, \
                   melon_7, melon_8, melon_9]
 
     return melon_list
 
+melon_list = make_melons(melon_types)
+print(melon_list)
+
 def get_sellability_report(melons):
     """Given a list of melon object, prints whether each one is sellable."""
 
     for melon in melons:
-        if is_sellable(self) == True:
+        if melon.is_sellable() == True:
             status = "(CAN BE SOLD)"
         else:
             status = "(NOT SELLABLE)"
@@ -130,8 +141,7 @@ def get_sellability_report(melons):
         print(f"Harvested by {melon.harvester_name} from \
                 Field {melon.field_number} {status}")
 
-
-
+print(get_sellability_report(melon_list))
 
 
 
