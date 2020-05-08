@@ -138,8 +138,8 @@ def get_sellability_report(melons):
             status = "(NOT SELLABLE)"
         #Or can be written as: 
         #status = 'CAN BE SOLD' if melon.is_sellable() else 'NOT SELLABLE'
-        print(f"Harvested by {melon.harvester_name} from \
-                Field {melon.field_number} {status}")
+        print(f"Harvested by {melon.harvester_name} from",
+              f"Field {melon.field_number} {status}")
 
 print(get_sellability_report(melon_list))
 
